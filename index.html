@@ -27,16 +27,14 @@
       <div id="parrafos"></div>
     </div>
     <script>
-      let tareas = JSON.parse(sessionStorage.getItem("tareas"));
-
+      let tareas = JSON.parse(localStorage.getItem("tareas")) || [];
       const formu = document.getElementById("formularioTareas");
-
       const parrafos = document.getElementById("parrafos");
 
-      const renderTareas = () => {
+      const dibujarTareas = () => {
         parrafos.innerHTML = "";
         tareas.forEach((tarea, index) => {
-          parrafos.innerHTML += ` <div><div class="div_tarea"><p>${tarea}<p/> <img src="img/delete-svgrepo-com.svg" alt="eliminar" class="eliminar"><img src="img/success-filled-svgrepo-com.svg" alt="completada" class="completado"> </div></div> `;
+          parrafos.innerHTML += ` <div class="div_tarea"> <p>${tarea}</p> <div> <img src="img/delete-svgrepo-com.svg" alt="eliminar" class="eliminar" data-index="${index}"> <img src="img/success-filled-svgrepo-com.svg" alt="marcado" class="completado" data-index="${index}"> </div> </div> `;
         });
       };
 
@@ -45,17 +43,18 @@
         const tarea = document.getElementById("tareas").value.trim();
         if (tarea) {
           tareas.push(tarea);
-          sessionStorage.setItem("tareas", JSON.stringify(tareas));
-          renderTareas();
+          localStorage.setItem("tareas", JSON.stringify(tareas));
+          dibujarTareas();
           formu.reset();
         }
       });
+
       parrafos.addEventListener("click", (event) => {
         if (event.target.classList.contains("eliminar")) {
           const index = event.target.dataset.index;
           tareas.splice(index, 1);
-          sessionStorage.setItem("tareas", JSON.stringify(tareas));
-          renderTareas();
+          localStorage.setItem("tareas", JSON.stringify(tareas));
+          dibujarTareas();
         } else if (event.target.classList.contains("completado")) {
           const index = event.target.dataset.index;
           const tareaElement = event.target
@@ -64,7 +63,8 @@
           tareaElement.classList.toggle("completada");
         }
       });
-      renderTareas();
+
+      dibujarTareas();
     </script>
   </body>
 </html>

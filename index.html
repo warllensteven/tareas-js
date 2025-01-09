@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mis tareas</title>
+    <link rel="stylesheet" href="inicio.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="contenedor">
+      <h1>Mis tareas</h1>
+      <form id="formularioTareas" class="formulario">
+        <input
+          type="text"
+          id="tareas"
+          placeholder="Ingresa la tarea"
+          required
+        />
+        <button type="submit" class="boton">Crear tarea</button>
+      </form>
+      <div id="parrafos"></div>
+    </div>
+    <script>
+      let tareas = JSON.parse(sessionStorage.getItem("tareas"));
+
+      const formu = document.getElementById("formularioTareas");
+
+      const parrafos = document.getElementById("parrafos");
+
+      const renderTareas = () => {
+        parrafos.innerHTML = "";
+        tareas.forEach((tarea, index) => {
+          parrafos.innerHTML += ` <div><div class="div_tarea"><p>${tarea}<p/> <img src="img/delete-svgrepo-com.svg" alt="eliminar" class="eliminar"><img src="img/success-filled-svgrepo-com.svg" alt="completada" class="completado"> </div></div> `;
+        });
+      };
+
+      formu.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const tarea = document.getElementById("tareas").value.trim();
+        if (tarea) {
+          tareas.push(tarea);
+          sessionStorage.setItem("tareas", JSON.stringify(tareas));
+          renderTareas();
+          formu.reset();
+        }
+      });
+      parrafos.addEventListener("click", (event) => {
+        if (event.target.classList.contains("eliminar")) {
+          const index = event.target.dataset.index;
+          tareas.splice(index, 1);
+          sessionStorage.setItem("tareas", JSON.stringify(tareas));
+          renderTareas();
+        } else if (event.target.classList.contains("completado")) {
+          const index = event.target.dataset.index;
+          const tareaElement = event.target
+            .closest(".div_tarea")
+            .querySelector("p");
+          tareaElement.classList.toggle("completada");
+        }
+      });
+      renderTareas();
+    </script>
+  </body>
+</html>

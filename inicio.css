@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: rgb(31, 31, 225);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.completada{
+  background-color: #62e666;
+}
+
+.contenedor {
+  background-color: white;
+  padding: 80px;
+  border-radius: 10px;
+}
+
+.sombra{
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"] {
+  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+input[type="text"]:focus {
+  border-color: blue;
+  outline: none;
+}
+
+.boton {
+  background-color: green;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.boton:hover {
+  background-color: #328b35;
+}
+
+#cerrarSesion {
+  background-color: var(--color-error);
+}
+
+#cerrarSesion:hover {
+  background-color: #ff4444;
+}
+
+#mensajeBienvenida {
+  text-align: center;
+  margin-bottom: 20px;
+  color: var(--color-texto);
+}
+
+#mensajeAlerta {
+  color: var(--color-error);
+  text-align: center;
+  margin-top: 10px;
+}
+
+.div_tarea {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+img{
+  width: 20px;
+  margin-right: 14px;
+}
+
+@media (max-width: 480px) {
+  .contenedor {
+    padding: 40px;
+  }
+  
+  .boton {
+    width: 100%;
+  }
+}
+
+

@@ -1,0 +1,34 @@
+{
+  "tareas": [
+    {
+      "titulo": "tarea1",
+      "hecha": true,
+      "id": 1
+    },
+    {
+      "titulo": "tarea2",
+      "hecha": true,
+      "id": 2
+    },
+    {
+      "titulo": "tarea3",
+      "hecha": true,
+      "id": 3
+    },
+    {
+      "titulo": "tarea4",
+      "hecha": false,
+      "id": 4
+    },
+    {
+      "titulo": "tarea5",
+      "hecha": false,
+      "id": 5
+    },
+    {
+      "titulo": "tarea6",
+      "hecha": true,
+      "id": 6
+    }
+  ]
+}

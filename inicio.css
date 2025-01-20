@@ -15,7 +15,9 @@ body {
 }
 
 .completada{
-  background-color: #62e666;
+  text-align: center;
+  background-color: #328b35;
+  color: white;
 }
 
 .contenedor {
@@ -97,9 +99,16 @@ input[type="text"]:focus {
 
 .div_tarea {
   width: 100%;
+}
+
+.section-mayor {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  border-radius: 4px;
+  padding: 5px;
+  margin-top: 5px;
 }
 
 img{
